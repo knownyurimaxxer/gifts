@@ -54,9 +54,11 @@ def branch_listing(branch):
     figures = []
     for f in files:
         src = html.escape(url(f))
+        name = html.escape(os.path.splitext(os.path.basename(f))[0])
         alt = html.escape(f)
         figures.append(
             f'<figure>\n'
+            f'<figcaption>{name}</figcaption>\n'
             f'<img src="{src}" alt="{alt}" loading="lazy">\n'
             f'<pre class="code"><code>{src}</code>'
             f'<button type="button" class="copy">¡Cópiame!</button></pre>\n'
@@ -110,7 +112,7 @@ for branch in branches:
     )
     write(os.path.join(site, branch, "index.html"), content)
 
-root_listing = render_tree(build_tree(branches)) if branches else '<p class="empty">No hay otras ramas</p>'
+root_listing = render_tree(build_tree(branches)) if branches else '<p class="empty">No hay ramas</p>'
 write(
     os.path.join(site, "index.html"),
     render(
