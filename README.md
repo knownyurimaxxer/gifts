@@ -1,1 +1,0 @@
-Esto es un archivo de todas las imágenes que he hecho para mis búsquedas, o un regalo, o que me las han pedido.
